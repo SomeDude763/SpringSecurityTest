@@ -15,19 +15,29 @@ public class Person {
     @Column(name = "username")
     @NotEmpty
     @Size(min = 2, max = 50, message = "Имя не дб пустым епт и размер от 2 до 50")
-    private String userName;
+    private String username;
     @Min(value = 1900,message = "да не может быть такого")
     @Column(name = "year_of_birth")
     private String yearOfBirth;
     @Column(name = "password")
     private String password;
+    @Column(name = "role")
+    private String role;
 
     public Person() {
     }
 
-    public Person(String userName, String yearOfBirth) {
-        this.userName = userName;
+    public Person(String username, String yearOfBirth) {
+        this.username = username;
         this.yearOfBirth = yearOfBirth;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public int getId() {
@@ -38,12 +48,12 @@ public class Person {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String userName) {
+        this.username = userName;
     }
 
     public String getYearOfBirth() {
@@ -66,9 +76,10 @@ public class Person {
     public String toString() {
         return "Person{" +
                 "id=" + id +
-                ", userName='" + userName + '\'' +
+                ", username='" + username + '\'' +
                 ", yearOfBirth='" + yearOfBirth + '\'' +
                 ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
                 '}';
     }
 }

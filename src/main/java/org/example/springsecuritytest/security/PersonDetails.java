@@ -3,10 +3,11 @@ package org.example.springsecuritytest.security;
 import org.example.springsecuritytest.models.Person;
 import org.jspecify.annotations.Nullable;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.io.Serializable;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class PersonDetails implements UserDetails {
@@ -18,7 +19,7 @@ public class PersonDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+        return Collections.singletonList(new SimpleGrantedAuthority(person.getRole()));//возвращает роль пользователя
     }
 
     @Override
@@ -28,7 +29,7 @@ public class PersonDetails implements UserDetails {
 
     @Override
     public String getUsername() {
-        return this.person.getUserName();
+        return this.person.getUsername();
     }
 
     @Override
